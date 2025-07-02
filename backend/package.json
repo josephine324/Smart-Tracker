@@ -6,9 +6,9 @@
     "test": "tests"
   },
   "scripts": {
-  "dev": "nodemon src/index.js",
-  "test": "jest"
-},
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
