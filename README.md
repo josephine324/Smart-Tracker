@@ -11,6 +11,9 @@ A web app to manage tasks with deadlines, progress tracking, and visual task sta
 
 ## Setup
 
+# Triggering CI again
+
+
 ### Backend
 ```bash
 cd backend
