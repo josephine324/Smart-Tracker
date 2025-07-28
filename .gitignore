@@ -10,3 +10,5 @@ override.tf
 override.tf.json
 *.tfplan
 
+terraform.tfstate
+terraform.tfstate.backup
