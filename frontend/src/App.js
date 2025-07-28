@@ -16,7 +16,7 @@ const App = () => {
             const data = await response.json();
             setTasks(data);
         } catch (error) {
-            console.error('Error fetching tasks:', error);
+            // console.error('Error fetching tasks:', error);
         }
     };
 

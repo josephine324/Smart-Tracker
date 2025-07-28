@@ -1,0 +1,63 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurem"
+      version = "~> 3.0.2"
+    }
+  }
+  required_version = ">= 1.1.0"
+}
+
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "rg" {
+  name     = "smarttracker"
+  location = "East US"
+}
+
+resource "azurerm_app_service_plan" "plan" {
+  name                = "smarttracker123"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
+}
+
+resource "azurerm_linux_web_app" "webapp" {
+  name                = "stucents-webapp"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  service_plan_id     = azurerm_app_service_plan.plan.id
+
+  site_config {
+    always_on = true
+
+    application_stack {
+      node_version = "16-lts"
+    }
+  }
+
+  app_settings = {
+    "MONGODB_URI" = var.mongodb_uri
+  }
+
+  # Deploy from GitHub
+  source_control {
+    repo_url           = var.github_repo_url
+    branch             = var.github_branch
+    manual_integration = true
+  }
+}
+
+e8bbaa1c-333d-4bcb-bfbc-74c67ceeab23
+
+docker push mutesi/smart-tracker-frontend:latest
+az containerapp update
+
