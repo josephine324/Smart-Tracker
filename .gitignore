@@ -1,0 +1,7 @@
+# Terraform state and secret files
+terraform.tfstate
+terraform.tfstate.*
+*.tfstate.*
+*.tfvars
+.terraform/
+terraform/
