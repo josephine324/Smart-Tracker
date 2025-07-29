@@ -1,14 +1,7 @@
-# Terraform
-.terraform/
-*.tfstate
-*.tfstate.backup
-.crash
-*.log
-*.tfvars
-terraform.tfvars
-override.tf
-override.tf.json
-*.tfplan
-
+# Terraform state and secret files
 terraform.tfstate
-terraform.tfstate.backup
+terraform.tfstate.*
+*.tfstate.*
+*.tfvars
+.terraform/
+
