@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-import dotenv from 'dotenv';
 
-dotenv.config();
+const BACKEND_URL = "https://smarttrackerbackend.bravesand-7252685b.francecentral.azurecontainerapps.io";
 
 const App = () => {
     const [tasks, setTasks] = useState([]);
@@ -15,7 +14,7 @@ const App = () => {
 
     const fetchTasks = async () => {
         try {
-            const response = await fetch(`${process.env.BACKEND_URL}/api/tasks`);
+            const response = await fetch(`${BACKEND_URL}/api/tasks`);
             const data = await response.json();
             setTasks(data);
         } catch (error) {

@@ -1,12 +1,11 @@
 import React from 'react';
-import dotenv from 'dotenv';
 
-dotenv.config();
+const BACKEND_URL = "https://smarttrackerbackend.bravesand-7252685b.francecentral.azurecontainerapps.io";
 
 const TaskList = ({ title, tasks, fetchTasks, setEditingTask }) => {
     const updateStatus = async (id, newStatus) => {
         try {
-            await fetch(`${process.env.BACKEND_URL}/api/tasks/${id}`, {
+            await fetch(`${BACKEND_URL}/api/tasks/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: newStatus })
@@ -19,7 +18,7 @@ const TaskList = ({ title, tasks, fetchTasks, setEditingTask }) => {
 
     const deleteTask = async (id) => {
         try {
-            await fetch(`${process.env.BACKEND_URL}/api/tasks/${id}`, {
+            await fetch(`${BACKEND_URL}/api/tasks/${id}`, {
                 method: 'DELETE'
             });
             fetchTasks();

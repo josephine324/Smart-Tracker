@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import dotenv from 'dotenv';
 
-dotenv.config();
+const BACKEND_URL = "https://smarttrackerbackend.bravesand-7252685b.francecentral.azurecontainerapps.io";
 
 const TaskForm = ({ fetchTasks, editingTask, setEditingTask }) => {
     const [task, setTask] = useState(
@@ -14,14 +13,14 @@ const TaskForm = ({ fetchTasks, editingTask, setEditingTask }) => {
 
         try {
             if (editingTask) {
-                await fetch(`${process.env.BACKEND_URL}/api/tasks/${editingTask._id}`, {
+                await fetch(`${BACKEND_URL}/api/tasks/${editingTask._id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ ...task, status: editingTask.status })
                 });
                 setEditingTask(null);
             } else {
-                await fetch(`${process.env.BACKEND_URL}/api/tasks`, {
+                await fetch(`${BACKEND_URL}/api/tasks`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ ...task, status: 'todo' })
