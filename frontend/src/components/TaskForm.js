@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const TaskForm = ({ fetchTasks, editingTask, setEditingTask }) => {
     const [task, setTask] = useState(
@@ -11,14 +14,14 @@ const TaskForm = ({ fetchTasks, editingTask, setEditingTask }) => {
 
         try {
             if (editingTask) {
-                await fetch(`http://localhost:5000/api/tasks/${editingTask._id}`, {
+                await fetch(`${process.env.BACKEND_URL}/api/tasks/${editingTask._id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ ...task, status: editingTask.status })
                 });
                 setEditingTask(null);
             } else {
-                await fetch('http://localhost:5000/api/tasks', {
+                await fetch(`${process.env.BACKEND_URL}/api/tasks`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ ...task, status: 'todo' })

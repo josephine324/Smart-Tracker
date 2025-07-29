@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const App = () => {
     const [tasks, setTasks] = useState([]);
@@ -12,7 +15,7 @@ const App = () => {
 
     const fetchTasks = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/tasks');
+            const response = await fetch(`${process.env.BACKEND_URL}/api/tasks`);
             const data = await response.json();
             setTasks(data);
         } catch (error) {
