@@ -1,11 +1,11 @@
 # Smart Tracker App
 Welcome to Smart Tracker, a task management application to organize your tasks efficiently. Built with a React frontend, Node.js/Express backend, and MongoDB (via Azure Cosmos DB), the app is containerized with Docker and hosted on Azure.
-Access the app at: https://smarttrackerbackend.bravesand-7252685b.francecentral.azurecontainerapps.io.
+Access the app at:https://smarttrackerapp.bravesand-7252685b.francecentral.azurecontainerapps.io/.
 # Using the App
 Smart Tracker helps you manage tasks with a Kanban-style board, featuring Todo, In Progress, and Completed columns.
 # Getting Started
 1. Visit the App:
-- Open the public URL: https://smarttrackerbackend.bravesand-7252685b.francecentral.azurecontainerapps.io.
+- Open the public URL: https://smarttrackerapp.bravesand-7252685b.francecentral.azurecontainerapps.io/.
 - No account or login is required.
 2. Manage Tasks:
 - Add a Task:
