@@ -3,33 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "form-data": "^4.0.4",
-    "pnpm": "^10.12.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "^0.0.0",
-    "typescript": "^4.9.5",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.4.17",
     "web-vitals": "^2.1.4"
   },
-  "overrides": {
-    "svgo": "^3.0.2"
-  },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "build": {
-    "outDir": "dist",
-    "emptyOutDir": true,
-    "sourcemap": false
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -50,11 +37,7 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^27.5.2",
-    "@types/node": "^20.19.9",
-    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.17"
+    "postcss": "^8.5.6"
   }
 }
