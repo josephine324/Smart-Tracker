@@ -112,3 +112,25 @@ jobs:
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:${{ github.sha }}
           docker tag smart-tracker-backend:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:latest
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:latest
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.1.0
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Apply
+        run: |
+          cd terraform
+          terraform apply -auto-approve \
+            -var="mongo_password=${{ secrets.MONGO_PASSWORD }}" \
+            -var="github_sha=${{ github.sha }}"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: "e8bbaa1c-333d-4bcb-bfbc-74c67ceeab23"
+          ARM_TENANT_ID: "149faad4-6736-43ac-b8ee-45cc3df98097"
