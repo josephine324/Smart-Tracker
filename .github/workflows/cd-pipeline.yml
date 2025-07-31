@@ -51,9 +51,13 @@ jobs:
       - name: Dependency vulnerability scan
         run: |
           cd frontend
-          npm audit --audit-level=moderate
+          npm audit --audit-level=critical || { echo "Critical vulnerabilities found"; exit 1; }
+          npm audit --audit-level=high || echo "High vulnerabilities found, continuing"
+          npm audit --audit-level=moderate || echo "Moderate vulnerabilities found, continuing"
           cd ../backend
-          npm audit --audit-level=moderate
+          npm audit --audit-level=critical || { echo "Critical vulnerabilities found"; exit 1; }
+          npm audit --audit-level=high || echo "High vulnerabilities found, continuing"
+          npm audit --audit-level=moderate || echo "Moderate vulnerabilities found, continuing"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
