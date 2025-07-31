@@ -103,8 +103,12 @@ jobs:
         run: |
           docker tag smart-tracker-frontend-jojo:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-frontend-jojo:${{ github.sha }}
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-frontend-jojo:${{ github.sha }}
+          docker tag smart-tracker-frontend-jojo:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-frontend-jojo:latest
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-frontend-jojo:latest
 
       - name: Push backend image
         run: |
           docker tag smart-tracker-backend:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:${{ github.sha }}
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:${{ github.sha }}
+          docker tag smart-tracker-backend:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:latest
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:latest
