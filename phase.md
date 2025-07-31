@@ -1,4 +1,7 @@
 - A live public URL: https://smarttrackerapp.bravesand-7252685b.francecentral.azurecontainerapps.io
+# Screenshot sof resources
+![Homepage Screenshot](images/Screenshot%20(71).png)
+
 - A link to the Pull Request: https://github.com/mbienaimee/todo-devops/pull/26
 ## Challenges I faced:
 - I had to repeat the same commands over and over again, especially when something failed or didn’t go through properly. It felt like I was stuck in a loop sometimes.
