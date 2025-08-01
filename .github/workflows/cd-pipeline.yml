@@ -97,19 +97,29 @@ jobs:
           docker tag smart-tracker-backend:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:latest
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:latest
 
-      # Option A: Update Azure Container Instances (if using ACI)
+      # Update Azure Container Apps
       - name: Login to Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Update Container Instances
+      - name: Update Container Apps
+        env:
+          RESOURCE_GROUP: smarttacker1
         run: |
-          # Update frontend container instance
-          az container restart --resource-group ${{ secrets.RESOURCE_GROUP }} --name smart-tracker-frontend
+          echo "Updating Container Apps in resource group: $RESOURCE_GROUP"
           
-          # Update backend container instance
-          az container restart --resource-group ${{ secrets.RESOURCE_GROUP }} --name smart-tracker-backend
+          # Update frontend container app
+          az containerapp update \
+            --name smarttrackerapp \
+            --resource-group $RESOURCE_GROUP \
+            --image ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-frontend-jojo:latest
+          
+          # Update backend container app
+          az containerapp update \
+            --name smarttrackerbackend \
+            --resource-group $RESOURCE_GROUP \
+            --image ${{ secrets.ACR_LOGIN_SERVER }}/smart-tracker-backend:latest
 
       # Option B: Update Azure App Service (if using App Service)
       # - name: Deploy to Azure App Service Frontend
