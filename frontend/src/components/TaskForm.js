@@ -41,7 +41,7 @@ const TaskForm = ({ fetchTasks, editingTask, setEditingTask }) => {
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     type="text"
-                    placeholder="Task name"
+                    placeholder="Task Title"
                     value={task.title}
                     onChange={(e) => setTask({ ...task, title: e.target.value })}
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
